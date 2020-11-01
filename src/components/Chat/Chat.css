@@ -6,6 +6,10 @@
     background-color: #363a3f;
 }
 
+.chat__messages{
+    flex: 1;
+}
+
 .chat__input {
     color: lightgray;
     display: flex;
