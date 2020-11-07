@@ -6,9 +6,13 @@ import './Login.css';
 function Login() {
 
     const signIn = () => {
-        auth.signInWithPopup(provider).catch(err => {
-            alert(err.message)
-        })
+        auth.signInWithPopup(provider)
+            .then(res => {
+                alert("done")
+            })
+            .catch(err => {
+                alert(err.message)
+            })
     }
 
     return (

@@ -5,7 +5,7 @@ import Chat from './components/Chat/Chat';
 import Login from './components/Login/Login';
 import Sidebar from './components/Sidebar/Sidebar';
 
-import { login, selectUser } from './features/userSlice';
+import { login, logout, selectUser } from './features/userSlice';
 import { auth } from './firebase';
 
 function App() {
@@ -25,11 +25,11 @@ function App() {
         }))
       }
       else {
-
+        dispatch(logout());
       }
     })
 
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="app">

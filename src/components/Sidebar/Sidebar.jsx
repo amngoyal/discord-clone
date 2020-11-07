@@ -1,10 +1,16 @@
 import { Avatar } from '@material-ui/core';
 import { Add, Call, ExpandMore, Headset, InfoOutlined, Mic, Settings, SignalCellularAlt } from '@material-ui/icons';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../features/userSlice';
+import { auth } from '../../firebase';
 import SidebarChannel from '../SidebarChannel/SidebarChannel';
 import './Sidebar.css';
 
 function Sidebar() {
+
+    const user = useSelector(selectUser);
+
     return (
         <div className="sidebar">
             <div className="sidebar__top">
@@ -47,10 +53,10 @@ function Sidebar() {
             </div>
 
             <div className="sidebar__profile">
-                <Avatar src="https://avatars3.githubusercontent.com/u/45818629?v=4" />
+                <Avatar onClick={() => auth.signOut()} src={user.photo} />
                 <div className="sidebar__profileInfo">
-                    <h3>@amangoyal</h3>
-                    <p>#5540</p>
+                    <h3>{user.displayName}</h3>
+                    <p>#{user.uid.substring(0,5).toUpperCase()}</p>
                 </div>
 
                 <div className="sidebar__profileIcons">
